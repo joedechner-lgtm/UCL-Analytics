@@ -5,18 +5,14 @@
   <title>Pasión por la Champions</title>
   <link rel="stylesheet" href="style.css">
 
-    <!-- Google Analytics -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX'); // Reemplaza con tu ID real
+    gtag('config', 'G-XXXXXXXXXX');
 
-  
-
-
-    // Evento personalizado: envío de encuesta
     function registrarEncuesta() {
       gtag('event', 'envio_encuesta', {
         'event_category': 'Encuesta',
@@ -27,83 +23,18 @@
     }
   </script>
 </head>
-  <script>
- <script>
-  window.onload = function() {
-    const preguntas = [ /* ... */ ];
-    let preguntaActual = 0;
-    let puntaje = 0;
-
-    const preguntaEl = document.getElementById("pregunta");
-    const formEl = document.getElementById("quiz-form");
-    const btnSiguiente = document.getElementById("siguiente-btn");
-    const resultadoFinal = document.getElementById("resultado-final");
-
-    function mostrarPregunta() {
-      const pregunta = preguntas[preguntaActual];
-      preguntaEl.textContent = pregunta.texto;
-      formEl.innerHTML = "";
-
-      pregunta.opciones.forEach(opcion => {
-        const label = document.createElement("label");
-        label.innerHTML = `<input type="radio" name="respuesta" value="${opcion}"> ${opcion}`;
-        formEl.appendChild(label);
-        formEl.appendChild(document.createElement("br"));
-      });
-    }
-
-    btnSiguiente.addEventListener("click", () => {
-      const seleccion = document.querySelector('input[name="respuesta"]:checked');
-      if (!seleccion) {
-        alert("Selecciona una respuesta antes de continuar.");
-        return;
-      }
-
-      if (seleccion.value === preguntas[preguntaActual].correcta) {
-        puntaje++;
-      }
-
-      preguntaActual++;
-
-      if (preguntaActual < preguntas.length) {
-        mostrarPregunta();
-      } else {
-        preguntaEl.textContent = "";
-        formEl.innerHTML = "";
-        btnSiguiente.style.display = "none";
-        resultadoFinal.textContent = `🏁 ¡Trivia completada! Tu puntaje: ${puntaje} de ${preguntas.length}`;
-      }
-    });
-
-    mostrarPregunta();
-  };
-</script>
-</script>
 <body>
-<div class="seccion" id="quiz-container">
-  <h2>🎯 Trivia Champions League</h2>
-  <div id="pregunta"></div>
-  <form id="quiz-form"></form>
-  <button id="siguiente-btn" class="boton">Siguiente</button>
-  <p id="resultado-final"></p>
-</div>
-  <div class="seccion">
-    <h1>Pasión por la Champions</h1>
-    <p>Explora, responde y demuestra cuánto sabes del torneo más prestigioso de Europa.</p>
+
+  <!-- Trivia Champions -->
+  <div class="seccion" id="quiz-container">
+    <h2>🎯 Trivia Champions League</h2>
+    <div id="pregunta"></div>
+    <form id="quiz-form"></form>
+    <button id="siguiente-btn" class="boton">Siguiente</button>
+    <p id="resultado-final"></p>
   </div>
 
-  <div class="seccion">
-<h2>🏆 Trivia rápida</h2>
- <form id="trivia-form">
-  <p>¿Quién ganó la Champions League en 2022?</p>
-  <label><input type="radio" name="respuesta" value="Real Madrid"> Real Madrid</label><br>
-  <label><input type="radio" name="respuesta" value="Liverpool"> Liverpool</label><br>
-  <label><input type="radio" name="respuesta" value="Manchester City"> Manchester City</label><br>
-  <button type="submit">Responder</button>
-</form>
-<p id="resultado"></p>
-  </div>
-
+  <!-- Encuesta -->
   <div class="seccion">
     <h2>📊 Encuesta</h2>
     <form onsubmit="registrarEncuesta(); return false;">
@@ -117,94 +48,92 @@
       <button class="boton" type="submit">Enviar</button>
     </form>
   </div>
-<div class="seccion">
- 
 
-<div class="seccion">
-  <h2>🏆 Bombos de la Champions League 2025/26</h2>
-  <section class="bombos-champions">
-    <div class="bombo">
-      <h3 class="titulo-bombo">Bombo 1</h3>
-      <ul>
-        <li class="equipo">Real Madrid 🇪🇸</li>
-        <li class="equipo">FC Barcelona 🇪🇸</li>
-        <li class="equipo">Paris Saint-Germain 🇫🇷</li>
-        <li class="equipo">Manchester City 🏴</li>
-        <li class="equipo">Bayern Munich 🇩🇪</li>
-        <li class="equipo">Liverpool 🏴</li>
-        <li class="equipo">Chelsea 🏴</li>
-        <li class="equipo">Inter de Milán 🇮🇹</li>
-        <li class="equipo">Benfica 🇵🇹</li>
-      </ul>
-    </div>
+  <!-- Bombos -->
+  <div class="seccion">
+    <h2>🏆 Bombos de la Champions League 2025/26</h2>
+    <section class="bombos-champions">
+      <div class="bombo">
+        <h3>Bombo 1</h3>
+        <ul>
+          <li>Real Madrid 🇪🇸</li>
+          <li>Manchester City 🏴</li>
+          <li>FC Barcelona 🇪🇸</li>
+          <!-- ...otros equipos -->
+        </ul>
+      </div>
+      <!-- Puedes agregar más bombos aquí -->
+    </section>
+  </div>
 
-    <div class="bombo">
-      <h3 class="titulo-bombo">Bombo 2</h3>
-      <ul>
-        <li class="equipo">Arsenal 🏴</li>
-        <li class="equipo">Juventus 🇮🇹</li>
-        <li class="equipo">Bayer Leverkusen 🇩🇪</li>
-        <li class="equipo">Atlético de Madrid 🇪🇸</li>
-        <li class="equipo">Atalanta 🇮🇹</li>
-        <li class="equipo">Eintracht Frankfurt 🇩🇪</li>
-        <li class="equipo">Villarreal 🇪🇸</li>
-        <li class="equipo">Tottenham Hotspur 🏴</li>
-        <li class="equipo">Ajax 🇳🇱</li>
-      </ul>
-    </div>
+  <!-- Script de trivia -->
+  <script>
+    window.onload = function() {
+      const preguntas = [
+        {
+          texto: "¿Qué equipo ganó la Champions League en 2022?",
+          opciones: ["Real Madrid", "Liverpool", "Manchester City"],
+          correcta: "Real Madrid"
+        },
+        {
+          texto: "¿Cuál de estos equipos nunca ha ganado la Champions?",
+          opciones: ["Arsenal", "Chelsea", "AC Milan"],
+          correcta: "Arsenal"
+        },
+        {
+          texto: "¿En qué ciudad se jugó la final de 2023?",
+          opciones: ["Estambul", "París", "Lisboa"],
+          correcta: "Estambul"
+        }
+      ];
 
-    <div class="bombo">
-      <h3 class="titulo-bombo">Bombo 3</h3>
-      <ul>
-        <li class="equipo">Napoli 🇮🇹</li>
-        <li class="equipo">PSV Eindhoven 🇳🇱</li>
-        <li class="equipo">Olympiacos 🇬🇷</li>
-        <li class="equipo">Slavia Praga 🇨🇿</li>
-        <li class="equipo">Sporting CP 🇵🇹</li>
-        <li class="equipo">Club Brugge 🇧🇪</li>
-        <li class="equipo">Marsella 🇫🇷</li>
-        <li class="equipo">Bodo/Glimt 🇳🇴</li>
-        <li class="equipo">Union Saint-Gilloise 🇧🇪</li>
-      </ul>
-    </div>
+      let preguntaActual = 0;
+      let puntaje = 0;
 
-    <div class="bombo">
-      <h3 class="titulo-bombo">Bombo 4</h3>
-      <ul>
-        <li class="equipo">AS Monaco 🇫🇷</li>
-        <li class="equipo">Galatasaray 🇹🇷</li>
-        <li class="equipo">Newcastle United 🏴</li>
-        <li class="equipo">Athletic Club 🇪🇸</li>
-        <li class="equipo">FC Copenhagen 🇩🇰</li>
-        <li class="equipo">Qarabag 🇦🇿</li>
-        <li class="equipo">Pafos FC 🇨🇾</li>
-        <li class="equipo">Kairat Almaty 🇰🇿</li>
-        <li class="equipo">Sparta Praga 🇨🇿</li>
-      </ul>
-    </div>
-  </section>
-</div>
-<script>
-  document.getElementById('trivia-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+      const preguntaEl = document.getElementById("pregunta");
+      const formEl = document.getElementById("quiz-form");
+      const btnSiguiente = document.getElementById("siguiente-btn");
+      const resultadoFinal = document.getElementById("resultado-final");
 
-    const respuestaSeleccionada = document.querySelector('input[name="respuesta"]:checked');
-    const resultado = document.getElementById('resultado');
+      function mostrarPregunta() {
+        const pregunta = preguntas[preguntaActual];
+        preguntaEl.textContent = pregunta.texto;
+        formEl.innerHTML = "";
 
-    if (respuestaSeleccionada) {
-      if (respuestaSeleccionada.value === "Real Madrid") {
-        resultado.textContent = "✅ ¡Correcto!";
-        resultado.style.color = "green";
-      } else {
-        resultado.textContent = "❌ Incorrecto. La respuesta correcta es Real Madrid.";
-        resultado.style.color = "red";
+        pregunta.opciones.forEach(opcion => {
+          const label = document.createElement("label");
+          label.innerHTML = `<input type="radio" name="respuesta" value="${opcion}"> ${opcion}`;
+          formEl.appendChild(label);
+          formEl.appendChild(document.createElement("br"));
+        });
       }
-    } else {
-      alert("Por favor selecciona una respuesta.");
-    }
-  });
-</script>
+
+      btnSiguiente.addEventListener("click", () => {
+        const seleccion = document.querySelector('input[name="respuesta"]:checked');
+        if (!seleccion) {
+          alert("Selecciona una respuesta antes de continuar.");
+          return;
+        }
+
+        if (seleccion.value === preguntas[preguntaActual].correcta) {
+          puntaje++;
+        }
+
+        preguntaActual++;
+
+        if (preguntaActual < preguntas.length) {
+          mostrarPregunta();
+        } else {
+          preguntaEl.textContent = "";
+          formEl.innerHTML = "";
+          btnSiguiente.style.display = "none";
+          resultadoFinal.textContent = `🏁 ¡Trivia completada! Tu puntaje: ${puntaje} de ${preguntas.length}`;
+        }
+      });
+
+      mostrarPregunta();
+    };
+  </script>
+
 </body>
 </html>
-
-
