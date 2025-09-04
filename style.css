@@ -20,7 +20,7 @@ body {
 ----------------------------------- */
 .champions-header {
   position: fixed;
-  top: 220;
+  top: 0;
   width: 100%;
   background-color: #001f54;
   padding: 20px;
@@ -210,6 +210,7 @@ footer {
 .bombo li:last-child {
   border-bottom: none;
 }
+
 
 
 
