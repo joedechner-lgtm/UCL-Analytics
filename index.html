@@ -293,16 +293,7 @@ window.onload = function() {
       votos[equipo]++;
       localStorage.setItem("votos", JSON.stringify(votos));
 
-     Evento GA (puedes comentar esto si aún no usas GA)
-    try {
-  gtag('event', 'voto_encuesta', {
-    event_category: 'interacción',
-    event_label: equipo,
-    value: 1
-  });
-} catch (e) {
-  console.warn("Evento GA falló:", e);
-}
+ 
 
 
       form.style.display = 'none';
@@ -361,6 +352,7 @@ document.querySelectorAll('[data-ga-section]').forEach(section => {
   </script>
 </body>
 </html>
+
 
 
 
