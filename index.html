@@ -293,12 +293,12 @@ window.onload = function() {
       votos[equipo]++;
       localStorage.setItem("votos", JSON.stringify(votos));
 
-      // 🎯 Evento GA (puedes comentar esto si aún no usas GA)
-      // gtag('event', 'voto_encuesta', {
-      //   event_category: 'interacción',
-      //   event_label: equipo,
-      //   value: 1
-      // });
+     Evento GA (puedes comentar esto si aún no usas GA)
+     gtag('event', 'voto_encuesta', {
+    event_category: 'interacción',
+    event_label: equipo,
+      value: 1
+     });
 
       form.style.display = 'none';
       mensaje.classList.remove('oculto');
@@ -329,7 +329,7 @@ window.onload = function() {
   function mostrarResultadosBarras() {
     // Aquí podrías actualizar barras visuales si tienes elementos tipo <div class="barra" data-equipo="...">
     // Ejemplo básico:
-    document.querySelectorAll('.barra').forEach(barra => {
+        document.querySelectorAll('.barra').forEach(barra => {
       const equipo = barra.dataset.equipo;
       const total = votos[equipo] || 0;
       barra.style.width = `${total * 10}px`; // Ajusta según escala
@@ -356,6 +356,7 @@ document.querySelectorAll('[data-ga-section]').forEach(section => {
   </script>
 </body>
 </html>
+
 
 
 
