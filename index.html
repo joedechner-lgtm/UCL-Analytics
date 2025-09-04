@@ -249,8 +249,19 @@
     }
   }
 </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const header = document.querySelector("header");
+    const main = document.querySelector("main");
+    if (header && main) {
+      main.style.paddingTop = `${header.offsetHeight}px`;
+    }
+  });
+</script>
+
 </body>
 </html>
+
 
 
 
