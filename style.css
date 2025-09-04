@@ -211,6 +211,29 @@ footer {
   border-bottom: none;
 }
 
+.encuesta {
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 40px auto;
+  max-width: 400px;
+  text-align: left;
+}
+
+.oculto {
+  display: none;
+}
+
+#mensajeVoto {
+  margin-top: 15px;
+  font-weight: bold;
+  color: green;
+}
+
+#resultados ul {
+  list-style-type: none;
+  padding: 0;
+}
 
 
 
