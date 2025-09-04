@@ -28,69 +28,56 @@
   </script>
 </head>
   <script>
-  const preguntas = [
-    {
-      texto: "¿Qué equipo ganó la Champions League en 2022?",
-      opciones: ["Real Madrid", "Liverpool", "Manchester City"],
-      correcta: "Real Madrid"
-    },
-    {
-      texto: "¿Cuál de estos equipos nunca ha ganado la Champions?",
-      opciones: ["Arsenal", "Chelsea", "AC Milan"],
-      correcta: "Arsenal"
-    },
-    {
-      texto: "¿En qué ciudad se jugó la final de 2023?",
-      opciones: ["Estambul", "París", "Lisboa"],
-      correcta: "Estambul"
-    }
-  ];
+ <script>
+  window.onload = function() {
+    const preguntas = [ /* ... */ ];
+    let preguntaActual = 0;
+    let puntaje = 0;
 
-  let preguntaActual = 0;
-  let puntaje = 0;
+    const preguntaEl = document.getElementById("pregunta");
+    const formEl = document.getElementById("quiz-form");
+    const btnSiguiente = document.getElementById("siguiente-btn");
+    const resultadoFinal = document.getElementById("resultado-final");
 
-  const preguntaEl = document.getElementById("pregunta");
-  const formEl = document.getElementById("quiz-form");
-  const btnSiguiente = document.getElementById("siguiente-btn");
-  const resultadoFinal = document.getElementById("resultado-final");
-
-  function mostrarPregunta() {
-    const pregunta = preguntas[preguntaActual];
-    preguntaEl.textContent = pregunta.texto;
-    formEl.innerHTML = "";
-
-    pregunta.opciones.forEach(opcion => {
-      const label = document.createElement("label");
-      label.innerHTML = `<input type="radio" name="respuesta" value="${opcion}"> ${opcion}`;
-      formEl.appendChild(label);
-      formEl.appendChild(document.createElement("br"));
-    });
-  }
-
-  btnSiguiente.addEventListener("click", () => {
-    const seleccion = document.querySelector('input[name="respuesta"]:checked');
-    if (!seleccion) {
-      alert("Selecciona una respuesta antes de continuar.");
-      return;
-    }
-
-    if (seleccion.value === preguntas[preguntaActual].correcta) {
-      puntaje++;
-    }
-
-    preguntaActual++;
-
-    if (preguntaActual < preguntas.length) {
-      mostrarPregunta();
-    } else {
-      preguntaEl.textContent = "";
+    function mostrarPregunta() {
+      const pregunta = preguntas[preguntaActual];
+      preguntaEl.textContent = pregunta.texto;
       formEl.innerHTML = "";
-      btnSiguiente.style.display = "none";
-      resultadoFinal.textContent = `🏁 ¡Trivia completada! Tu puntaje: ${puntaje} de ${preguntas.length}`;
-    }
-  });
 
-  mostrarPregunta();
+      pregunta.opciones.forEach(opcion => {
+        const label = document.createElement("label");
+        label.innerHTML = `<input type="radio" name="respuesta" value="${opcion}"> ${opcion}`;
+        formEl.appendChild(label);
+        formEl.appendChild(document.createElement("br"));
+      });
+    }
+
+    btnSiguiente.addEventListener("click", () => {
+      const seleccion = document.querySelector('input[name="respuesta"]:checked');
+      if (!seleccion) {
+        alert("Selecciona una respuesta antes de continuar.");
+        return;
+      }
+
+      if (seleccion.value === preguntas[preguntaActual].correcta) {
+        puntaje++;
+      }
+
+      preguntaActual++;
+
+      if (preguntaActual < preguntas.length) {
+        mostrarPregunta();
+      } else {
+        preguntaEl.textContent = "";
+        formEl.innerHTML = "";
+        btnSiguiente.style.display = "none";
+        resultadoFinal.textContent = `🏁 ¡Trivia completada! Tu puntaje: ${puntaje} de ${preguntas.length}`;
+      }
+    });
+
+    mostrarPregunta();
+  };
+</script>
 </script>
 <body>
 <div class="seccion" id="quiz-container">
@@ -107,7 +94,7 @@
 
   <div class="seccion">
 <h2>🏆 Trivia rápida</h2>
-    <  <form id="trivia-form">
+ <form id="trivia-form">
   <p>¿Quién ganó la Champions League en 2022?</p>
   <label><input type="radio" name="respuesta" value="Real Madrid"> Real Madrid</label><br>
   <label><input type="radio" name="respuesta" value="Liverpool"> Liverpool</label><br>
@@ -132,9 +119,7 @@
   </div>
 <div class="seccion">
  
-* Botones UEFA */
-.boton {
-  background
+
 <div class="seccion">
   <h2>🏆 Bombos de la Champions League 2025/26</h2>
   <section class="bombos-champions">
@@ -221,4 +206,5 @@
 </script>
 </body>
 </html>
+
 
