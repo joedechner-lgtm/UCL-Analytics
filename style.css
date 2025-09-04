@@ -7,7 +7,7 @@
    Estilos base
 ----------------------------------- */
 body {
-    padding-top: 120px; /* Ajusta según la altura real del encabezado */
+    padding-top: 200px; /* Ajusta según la altura real del encabezado */
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(to bottom, #0a0f2c, #1c1f4a);
   color: #ffffff;
@@ -210,6 +210,7 @@ footer {
 .bombo li:last-child {
   border-bottom: none;
 }
+
 
 
 
