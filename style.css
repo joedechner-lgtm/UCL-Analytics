@@ -201,7 +201,7 @@ label {
   }
 }
 #resultados {
-  background-color: #f0f4ff;
+  background-color: red;
   border: 2px solid #0033a0;
   border-radius: 8px;
   padding: 20px;
