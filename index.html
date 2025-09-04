@@ -235,47 +235,42 @@
         });
       }
 
-      btnSiguiente.addEventListener("click", () => {
-        const seleccion = document.querySelector('input[name="respuesta"]:checked');
-        if (!seleccion) {
-          alert("Selecciona una respuesta antes de continuar.");
-          return;
-        }
+     btnSiguiente.addEventListener("click", () => {
+  const seleccion = document.querySelector('input[name="respuesta"]:checked');
+  if (!seleccion) {
+    alert("Selecciona una respuesta antes de continuar.");
+    return;
+  }
 
-        if (seleccion.value === preguntas[preguntaActual].correcta) {
-  puntaje++;
+  if (seleccion.value === preguntas[preguntaActual].correcta) {
+    puntaje++;
 
-  // Evento GA4: respuesta correcta
-  gtag('event', 'respuesta_trivia', {
-    event_category: 'trivia',
-    event_label: 'correcta',
-    value: 1
-  });
-} else {
-  // Evento GA4: respuesta incorrecta
-  gtag('event', 'respuesta_trivia', {
-    event_category: 'trivia',
-    event_label: 'incorrecta',
-    value: 1
-  });
-}
+    // Evento GA4: respuesta correcta
+    gtag('event', 'respuesta_trivia', {
+      event_category: 'trivia',
+      event_label: 'correcta',
+      value: 1
+    });
+  } else {
+    // Evento GA4: respuesta incorrecta
+    gtag('event', 'respuesta_trivia', {
+      event_category: 'trivia',
+      event_label: 'incorrecta',
+      value: 1
+    });
+  }
 
-          preguntaEl.textContent = "";
-          formEl.innerHTML = "";
-          btnSiguiente.style.display = "none";
-          resultadoFinal.textContent = `🏁 ¡Trivia completada! Tu puntaje: ${puntaje} de ${preguntas.length}`;
-        }
-      });
+  preguntaActual++;
 
-      mostrarPregunta();
-    };
-  </script>
- <script>
-  // Referencias correctas
-  const form = document.getElementById('encuesta-champions');
-  const mensaje = document.getElementById('mensajeVoto');
-  const resultados = document.getElementById('resultados');
-  const listaResultados = document.getElementById('listaResultados');
+  if (preguntaActual < preguntas.length) {
+    mostrarPregunta(); // muestra la siguiente pregunta
+  } else {
+    preguntaEl.textContent = "";
+    formEl.innerHTML = "";
+    btnSiguiente.style.display = "none";
+    resultadoFinal.textContent = `🏁 ¡Trivia completada! Tu puntaje: ${puntaje} de ${preguntas.length}`;
+  }
+});
 
   // Inicializar votos
   const votos = {};
@@ -370,6 +365,7 @@ document.querySelectorAll('[data-ga-section]').forEach(section => {
 });
 </body>
 </html>
+
 
 
 
