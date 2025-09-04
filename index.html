@@ -6,8 +6,7 @@
   <link rel="stylesheet" href="style.css">
 
   <!-- Google Analytics -->
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RFSJVWE021"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFSJVWE021"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -293,7 +292,16 @@ window.onload = function() {
       votos[equipo]++;
       localStorage.setItem("votos", JSON.stringify(votos));
 
- 
+    // Evento GA (puedes comentar esto si aún no usas GA)
+    try {
+  gtag('event', 'voto_encuesta', {
+    event_category: 'interacción',
+    event_label: equipo,
+    value: 1
+  });
+} catch (e) {
+  console.warn("Evento GA falló:", e);
+}
 
 
       form.style.display = 'none';
@@ -352,6 +360,7 @@ document.querySelectorAll('[data-ga-section]').forEach(section => {
   </script>
 </body>
 </html>
+
 
 
 
