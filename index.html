@@ -205,17 +205,54 @@
     };
   </script>
 <script>
+ <script>
+  // 1️⃣ Referencias a elementos del DOM
   const form = document.getElementById('formEncuesta');
   const mensaje = document.getElementById('mensajeVoto');
   const resultados = document.getElementById('resultados');
   const listaResultados = document.getElementById('listaResultados');
 
-  // Simulación de votos (puedes conectar esto con Google Analytics o backend luego)
-  const votos = { };
-// Recorre todos los inputs con name="equipo" y crea una entrada en el objeto
-document.querySelectorAll('input[name="equipo"]').forEach(input => {
-  votos[input.value] = 0;
-});
+  // 2️⃣ Generar el objeto votos dinámicamente desde los inputs
+  const votos = {};
+  document.querySelectorAll('input[name="equipo"]').forEach(input => {
+    votos[input.value] = 0;
+  });
+
+  // 3️⃣ Evento de envío del formulario
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const seleccion = document.querySelector('input[name="equipo"]:checked');
+
+    if (seleccion) {
+      const equipo = seleccion.value;
+      votos[equipo]++;
+
+      form.style.display = 'none';
+      mensaje.classList.remove('oculto');
+      resultados.classList.remove('oculto');
+
+      // Ocultar el mensaje después de 4 segundos
+      setTimeout(() => {
+        mensaje.classList.add('oculto');
+      }, 4000);
+
+      mostrarResultados();
+    } else {
+      alert("Por favor selecciona un equipo antes de votar.");
+    }
+  });
+
+  // 4️⃣ Mostrar resultados
+  function mostrarResultados() {
+    listaResultados.innerHTML = '';
+    for (const equipo in votos) {
+      const li = document.createElement('li');
+      li.textContent = `${equipo}: ${votos[equipo]} voto(s)`;
+      listaResultados.appendChild(li);
+    }
+  }
+</script>
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     const seleccion = form.equipo.value;
@@ -239,6 +276,7 @@ document.querySelectorAll('input[name="equipo"]').forEach(input => {
 </script>
 </body>
 </html>
+
 
 
 
