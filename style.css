@@ -1,5 +1,5 @@
 /* -----------------------------------
-   Tipografía moderna desde Google Fonts
+   Tipografía moderna
 ----------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
@@ -7,16 +7,16 @@
    Estilos base
 ----------------------------------- */
 body {
-    padding-top: 200px; /* Ajusta según la altura real del encabezado */
+  padding-top: 200px;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(to bottom, #0a0f2c, #1c1f4a);
   color: #ffffff;
   margin: 0;
-  padding: 90;
+  padding: 0;
 }
 
 /* -----------------------------------
-   Encabezado Champions animado y fijo
+   Encabezado fijo y animado
 ----------------------------------- */
 .champions-header {
   position: fixed;
@@ -28,13 +28,6 @@ body {
   border-bottom: 3px solid #ffd700;
   z-index: 1000;
   animation: fadeInDown 1s ease-out;
-}
-
-.champions-logo {
-  width: 60px;
-  height: auto;
-  margin-bottom: 10px;
-  animation: pulse 2s infinite;
 }
 
 .champions-header h1 {
@@ -49,46 +42,16 @@ body {
   margin-top: 10px;
 }
 
-/* Animaciones */
+/* -----------------------------------
+   Animaciones
+----------------------------------- */
 @keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
 /* -----------------------------------
    Secciones generales
------------------------------------ */
-section {
-  margin: 30px auto;
-  padding: 20px;
-  max-width: 800px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-}
-
-/* -----------------------------------
-   Secciones tipo tarjeta (trivia, encuesta, bombos)
 ----------------------------------- */
 .seccion {
   background-color: rgba(255, 255, 255, 0.05);
@@ -106,8 +69,28 @@ section {
 }
 
 /* -----------------------------------
-   Botones interactivos estilo UEFA
+   Encuesta
 ----------------------------------- */
+.encuesta {
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 40px auto;
+  max-width: 400px;
+  text-align: left;
+}
+
+fieldset {
+  border: none;
+  margin-top: 10px;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
 .boton {
   background-color: #ffd700;
   color: #001f54;
@@ -124,52 +107,41 @@ section {
 }
 
 /* -----------------------------------
-   Pie de página sobrio
+   Resultados
 ----------------------------------- */
-footer {
-  background-color: #001f54;
-  color: #ccc;
-  text-align: center;
+.oculto {
+  display: none;
+}
+
+#mensajeVoto {
+  margin-top: 15px;
+  font-weight: bold;
+  color: green;
+}
+
+#resultados {
+  margin-top: 20px;
   padding: 15px;
-  font-size: 0.9em;
-  border-top: 2px solid #ffd700;
+  background-color: #f9f9f9;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  color: #000;
+}
+
+#resultados ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 /* -----------------------------------
-   Responsive para móviles
+   Bombos
 ----------------------------------- */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8em;
-  }
-
-  section,
-  .seccion {
-    margin: 15px;
-    padding: 15px;
-/* Sección general */
-.seccion {
-  padding: 2rem;
-  background-color: #f4f6fa;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-/* Título principal */
-.seccion h2 {
-  text-align: center;
-  font-size: 2rem;
-  color: #003366;
-  margin-bottom: 2rem;
-}
-
-/* Contenedor de bombos */
 .bombos-champions {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
 
-/* Cada bombo */
 .bombo {
   background-color: #ffffff;
   border: 2px solid #003366;
@@ -177,13 +149,13 @@ footer {
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
+  color: #000;
 }
 
 .bombo:hover {
   transform: translateY(-5px);
 }
 
-/* Título de cada bombo */
 .bombo h3 {
   text-align: center;
   color: #003366;
@@ -191,7 +163,6 @@ footer {
   margin-bottom: 1rem;
 }
 
-/* Lista de equipos */
 .bombo ul {
   list-style: none;
   padding: 0;
@@ -211,65 +182,21 @@ footer {
   border-bottom: none;
 }
 
-.encuesta {
-  background-color: #f0f8ff;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 40px auto;
-  max-width: 400px;
-  text-align: left;
+/* -----------------------------------
+   Responsive
+----------------------------------- */
+@media (max-width: 600px) {
+  .champions-header h1 {
+    font-size: 1.8em;
+  }
+
+  .seccion,
+  .encuesta {
+    margin: 15px;
+    padding: 15px;
+  }
+
+  .bombos-champions {
+    grid-template-columns: 1fr;
+  }
 }
-
-.oculto {
-  display: none;
-}
-
-#mensajeVoto {
-  margin-top: 15px;
-  font-weight: bold;
-  color: green;
-}
-
-#resultados ul {
-  list-style-type: none;
-  padding: 0;
-}
-#resultados {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #f9f9f9;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  z-index: 10;
-  position: relative;
-}
-.seccion {
-  margin-bottom: 40px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-}
-
-.encuesta {
-  background-color: #f0f8ff;
-}
-
-.bombos {
-  background-color: #fffbe6;
-}
-
-#resultados {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #f9f9f9;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  position: relative;
-  z-index: 10;
-}
-
-
-
-
-
-
