@@ -348,6 +348,7 @@ function mostrarResultados() {
   });
 }
 </script>
+  <script>
   const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -363,8 +364,10 @@ function mostrarResultados() {
 document.querySelectorAll('[data-ga-section]').forEach(section => {
   observer.observe(section);
 });
+  </script>
 </body>
 </html>
+
 
 
 
