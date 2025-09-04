@@ -261,14 +261,19 @@
     });
   };
 </script>
+ <script>
+window.onload = function() {
   // Inicializar votos
   const votos = {};
   document.querySelectorAll('input[name="equipo"]').forEach(input => {
     votos[input.value] = 0;
   });
-const form = document.getElementById("encuesta-champions");
+
+  // Elementos del DOM
+  const form = document.getElementById("encuesta-champions");
   const mensaje = document.getElementById("mensajeVoto");
   const resultados = document.getElementById("resultados");
+  const listaResultados = document.getElementById("lista-resultados");
 
   // Evento de envío
   form.addEventListener('submit', function(e) {
@@ -279,17 +284,20 @@ const form = document.getElementById("encuesta-champions");
       const equipo = seleccion.value;
       votos[equipo]++;
       localStorage.setItem("votos", JSON.stringify(votos));
-       // 🎯 Evento GA: registro de voto
-    gtag('event', 'voto_encuesta', {
-      event_category: 'interacción',
-      event_label: equipo,
-      value: 1
-    });
+
+      // 🎯 Evento GA (puedes comentar esto si aún no usas GA)
+      // gtag('event', 'voto_encuesta', {
+      //   event_category: 'interacción',
+      //   event_label: equipo,
+      //   value: 1
+      // });
 
       form.style.display = 'none';
       mensaje.classList.remove('oculto');
       resultados.classList.remove('oculto');
-      mostrarResultados();
+
+      mostrarResultadosLista();
+      mostrarResultadosBarras();
 
       setTimeout(() => {
         mensaje.classList.add('oculto');
@@ -298,11 +306,9 @@ const form = document.getElementById("encuesta-champions");
       alert("Por favor selecciona un equipo antes de votar.");
     }
   });
-mostrarResultadosLista();     // muestra la lista textual
-  mostrarResultadosBarras();    // actualiza las barras visuales
-});
-  // Mostrar resultados
-  function mostrarResultadoslista() {
+
+  // Mostrar resultados en lista
+  function mostrarResultadosLista() {
     listaResultados.innerHTML = '';
     for (const equipo in votos) {
       const li = document.createElement('li');
@@ -310,38 +316,18 @@ mostrarResultadosLista();     // muestra la lista textual
       listaResultados.appendChild(li);
     }
   }
-</script>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-  const header = document.querySelector("header");
-  const main = document.querySelector("main");
-  if (header && main) {
-    main.style.paddingTop = `${header.offsetHeight}px`;
+
+  // Mostrar resultados en barras (puedes personalizar esto)
+  function mostrarResultadosBarras() {
+    // Aquí podrías actualizar barras visuales si tienes elementos tipo <div class="barra" data-equipo="...">
+    // Ejemplo básico:
+    document.querySelectorAll('.barra').forEach(barra => {
+      const equipo = barra.dataset.equipo;
+      const total = votos[equipo] || 0;
+      barra.style.width = `${total * 10}px`; // Ajusta según escala
+    });
   }
-});
-</script>
-<script>
-function mostrarResultadosbarra() {
-  // Obtener todos los votos almacenados
-  const votos = JSON.parse(localStorage.getItem("votos")) || {};
-
-  // Calcular el total de votos
-  const totalVotos = Object.values(votos).reduce((acc, val) => acc + val, 0);
-
-  // Iterar sobre cada equipo y actualizar la barra
-  const resultadosDiv = document.getElementById("resultados");
-  const equipos = resultadosDiv.querySelectorAll(".resultado");
-
-  equipos.forEach(resultado => {
-    const nombreEquipo = resultado.querySelector(".equipo").textContent.trim();
-    const cantidad = votos[nombreEquipo] || 0;
-    const porcentaje = totalVotos > 0 ? Math.round((cantidad / totalVotos) * 100) : 0;
-
-    const barra = resultado.querySelector(".relleno");
-    barra.style.width = porcentaje + "%";
-    barra.textContent = porcentaje + "%";
-  });
-}
+};
 </script>
   <script>
   const observer = new IntersectionObserver((entries) => {
@@ -362,6 +348,7 @@ document.querySelectorAll('[data-ga-section]').forEach(section => {
   </script>
 </body>
 </html>
+
 
 
 
