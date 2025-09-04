@@ -201,7 +201,7 @@ label {
   }
 }
 #resultados {
-  background-color: red;
+  background-color: #007bff;
   border: 2px solid #0033a0;
   border-radius: 8px;
   padding: 20px;
@@ -219,4 +219,23 @@ label {
   font-weight: bold;
   margin-bottom: 6px;
   color: #222;
+}
+.barra {
+  background-color: #e0e0e0; /* fondo neutro */
+  border-radius: 5px;
+  overflow: hidden;
+  height: 20px;
+  margin-top: 5px;
+}
+
+.relleno {
+  background-color: #007bff; /* azul UEFA-style */
+  height: 100%;
+  width: 0%;
+  min-width: 2px; /* 👈 esto asegura que se vea algo aunque sea 0% */
+  color: white;
+  text-align: right;
+  padding-right: 5px;
+  border-radius: 5px;
+  transition: width 0.5s ease;
 }
