@@ -58,10 +58,62 @@
     </fieldset>
     <button type="submit" class="boton">Votar</button>
     </form>
+    
      <div id="mensajeVoto" class="oculto">✅ ¡Gracias por votar!</div>
 <div id="resultados" class="oculto">
+ <div id="resultados">
   <h3>Resultados:</h3>
-  <ul id="listaResultados"></ul>
+
+  <div class="resultado">
+    <span class="equipo">Real Madrid 🇪🇸</span>
+    <div class="barra"><div class="relleno" style="width: 0%;">0%</div></div>
+  </div>
+
+  <div class="resultado">
+    <span class="equipo">Manchester City 🏴</span>
+    <div class="barra"><div class="relleno" style="width: 0%;">0%</div></div>
+  </div>
+
+  <div class="resultado">
+    <span class="equipo">Bayern Múnich 🇩🇪</span>
+    <div class="barra"><div class="relleno" style="width: 0%;">0%</div></div>
+  </div>
+
+  <div class="resultado">
+    <span class="equipo">Paris Saint-Germain 🇫🇷</span>
+    <div class="barra"><div class="relleno" style="width: 0%;">0%</div></div>
+  </div>
+
+  <div class="resultado">
+    <span class="equipo">FC Barcelona 🇪🇸</span>
+    <div class="barra"><div class="relleno" style="width: 0%;">0%</div></div>
+  </div>
+
+  <div class="resultado">
+    <span class="equipo">Liverpool 🏴</span>
+    <div class="barra"><div class="relleno" style="width: 0%;">0%</div></div>
+  </div>
+
+  <div class="resultado">
+    <span class="equipo">Inter de Milán 🇮🇹</span>
+    <div class="barra"><div class="relleno" style="width: 0%;">0%</div></div>
+  </div>
+
+  <div class="resultado">
+    <span class="equipo">Chelsea 🏴</span>
+    <div class="barra"><div class="relleno" style="width: 0%;">0%</div></div>
+  </div>
+
+  <div class="resultado">
+    <span class="equipo">Arsenal 🏴</span>
+    <div class="barra"><div class="relleno" style="width: 0%;">0%</div></div>
+  </div>
+
+  <div class="resultado">
+    <span class="equipo">Atlético de Madrid 🇪🇸</span>
+    <div class="barra"><div class="relleno" style="width: 0%;">0%</div></div>
+  </div>
+</div>
 </div>
 
 </div>
@@ -259,9 +311,32 @@
   }
 });
 </script>
+<script>
+function mostrarResultados() {
+  // Obtener todos los votos almacenados
+  const votos = JSON.parse(localStorage.getItem("votos")) || {};
 
+  // Calcular el total de votos
+  const totalVotos = Object.values(votos).reduce((acc, val) => acc + val, 0);
+
+  // Iterar sobre cada equipo y actualizar la barra
+  const resultadosDiv = document.getElementById("resultados");
+  const equipos = resultadosDiv.querySelectorAll(".resultado");
+
+  equipos.forEach(resultado => {
+    const nombreEquipo = resultado.querySelector(".equipo").textContent.trim();
+    const cantidad = votos[nombreEquipo] || 0;
+    const porcentaje = totalVotos > 0 ? Math.round((cantidad / totalVotos) * 100) : 0;
+
+    const barra = resultado.querySelector(".relleno");
+    barra.style.width = porcentaje + "%";
+    barra.textContent = porcentaje + "%";
+  });
+}
+</script>
 </body>
 </html>
+
 
 
 
