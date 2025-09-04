@@ -195,84 +195,72 @@
 </main>
   <!-- Script de trivia -->
   <script>
-    window.onload = function() {
-      const preguntas = [
-        {
-          texto: "¿Qué equipo ganó la Champions League en 2022?",
-          opciones: ["Real Madrid", "Liverpool", "Manchester City"],
-          correcta: "Real Madrid"
-        },
-        {
-          texto: "¿Cuál de estos equipos nunca ha ganado la Champions?",
-          opciones: ["Arsenal", "Chelsea", "AC Milan"],
-          correcta: "Arsenal"
-        },
-        {
-          texto: "¿En qué ciudad se jugó la final de 2023?",
-          opciones: ["Estambul", "París", "Lisboa"],
-          correcta: "Estambul"
-        }
-        
-      ];
-
-      let preguntaActual = 0;
-      let puntaje = 0;
-
-      const preguntaEl = document.getElementById("pregunta");
-      const formEl = document.getElementById("quiz-form");
-      const btnSiguiente = document.getElementById("siguiente-btn");
-      const resultadoFinal = document.getElementById("resultado-final");
-
-      function mostrarPregunta() {
-        const pregunta = preguntas[preguntaActual];
-        preguntaEl.textContent = pregunta.texto;
-        formEl.innerHTML = "";
-
-        pregunta.opciones.forEach(opcion => {
-          const label = document.createElement("label");
-          label.innerHTML = `<input type="radio" name="respuesta" value="${opcion}"> ${opcion}`;
-          formEl.appendChild(label);
-          formEl.appendChild(document.createElement("br"));
-        });
+  window.onload = function() {
+    const preguntas = [
+      {
+        texto: "¿Qué equipo ganó la Champions League en 2022?",
+        opciones: ["Real Madrid", "Liverpool", "Manchester City"],
+        correcta: "Real Madrid"
+      },
+      {
+        texto: "¿Cuál de estos equipos nunca ha ganado la Champions?",
+        opciones: ["Arsenal", "Chelsea", "AC Milan"],
+        correcta: "Arsenal"
+      },
+      {
+        texto: "¿En qué ciudad se jugó la final de 2023?",
+        opciones: ["Estambul", "París", "Lisboa"],
+        correcta: "Estambul"
       }
-mostrarPregunta();
-     btnSiguiente.addEventListener("click", () => {
-  const seleccion = document.querySelector('input[name="respuesta"]:checked');
-  if (!seleccion) {
-    alert("Selecciona una respuesta antes de continuar.");
-    return;
-  }
+    ];
 
-  if (seleccion.value === preguntas[preguntaActual].correcta) {
-    puntaje++;
+    let preguntaActual = 0;
+    let puntaje = 0;
 
-    // Evento GA4: respuesta correcta
-    gtag('event', 'respuesta_trivia', {
-      event_category: 'trivia',
-      event_label: 'correcta',
-      value: 1
+    const preguntaEl = document.getElementById("pregunta");
+    const formEl = document.getElementById("quiz-form");
+    const btnSiguiente = document.getElementById("siguiente-btn");
+    const resultadoFinal = document.getElementById("resultado-final");
+
+    function mostrarPregunta() {
+      const pregunta = preguntas[preguntaActual];
+      preguntaEl.textContent = pregunta.texto;
+      formEl.innerHTML = "";
+
+      pregunta.opciones.forEach(opcion => {
+        const label = document.createElement("label");
+        label.innerHTML = `<input type="radio" name="respuesta" value="${opcion}"> ${opcion}`;
+        formEl.appendChild(label);
+        formEl.appendChild(document.createElement("br"));
+      });
+    }
+
+    mostrarPregunta(); // ← inicia la trivia
+
+    btnSiguiente.addEventListener("click", () => {
+      const seleccion = document.querySelector('input[name="respuesta"]:checked');
+      if (!seleccion) {
+        alert("Selecciona una respuesta antes de continuar.");
+        return;
+      }
+
+      if (seleccion.value === preguntas[preguntaActual].correcta) {
+        puntaje++;
+      }
+
+      preguntaActual++;
+
+      if (preguntaActual < preguntas.length) {
+        mostrarPregunta();
+      } else {
+        preguntaEl.textContent = "";
+        formEl.innerHTML = "";
+        btnSiguiente.style.display = "none";
+        resultadoFinal.textContent = `🏁 ¡Trivia completada! Tu puntaje: ${puntaje} de ${preguntas.length}`;
+      }
     });
-  } else {
-    // Evento GA4: respuesta incorrecta
-    gtag('event', 'respuesta_trivia', {
-      event_category: 'trivia',
-      event_label: 'incorrecta',
-      value: 1
-    });
-  }
-
-  preguntaActual++;
-
-  if (preguntaActual < preguntas.length) {
-    mostrarPregunta(); // muestra la siguiente pregunta
-  } else {
-    preguntaEl.textContent = "";
-    formEl.innerHTML = "";
-    btnSiguiente.style.display = "none";
-    resultadoFinal.textContent = `🏁 ¡Trivia completada! Tu puntaje: ${puntaje} de ${preguntas.length}`;
-  }
-});
-
+  };
+</script>
   // Inicializar votos
   const votos = {};
   document.querySelectorAll('input[name="equipo"]').forEach(input => {
@@ -374,5 +362,6 @@ document.querySelectorAll('[data-ga-section]').forEach(section => {
   </script>
 </body>
 </html>
+
 
 
