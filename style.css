@@ -15,21 +15,65 @@ body {
 }
 
 /* -----------------------------------
-   Encabezado tipo Champions
+   Encabezado Champions animado y fijo
 ----------------------------------- */
-header {
+.champions-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: #001f54;
   padding: 20px;
   text-align: center;
   border-bottom: 3px solid #ffd700;
+  z-index: 1000;
+  animation: fadeInDown 1s ease-out;
 }
 
-header h1 {
+.champions-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+  animation: pulse 2s infinite;
+}
+
+.champions-header h1 {
   font-size: 2.5em;
   color: #ffd700;
   margin: 0;
 }
 
+.champions-header p {
+  font-size: 1.2em;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 /* -----------------------------------
    Secciones generales
 ----------------------------------- */
@@ -165,3 +209,4 @@ footer {
 .bombo li:last-child {
   border-bottom: none;
 }
+
