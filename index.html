@@ -212,6 +212,7 @@
           opciones: ["Estambul", "París", "Lisboa"],
           correcta: "Estambul"
         }
+        mostrarPregunta();
       ];
 
       let preguntaActual = 0;
@@ -277,6 +278,9 @@
   document.querySelectorAll('input[name="equipo"]').forEach(input => {
     votos[input.value] = 0;
   });
+const form = document.getElementById("encuesta-champions");
+  const mensaje = document.getElementById("mensajeVoto");
+  const resultados = document.getElementById("resultados");
 
   // Evento de envío
   form.addEventListener('submit', function(e) {
@@ -286,6 +290,7 @@
     if (seleccion) {
       const equipo = seleccion.value;
       votos[equipo]++;
+      localStorage.setItem("votos", JSON.stringify(votos));
        // 🎯 Evento GA: registro de voto
     gtag('event', 'voto_encuesta', {
       event_category: 'interacción',
@@ -305,9 +310,11 @@
       alert("Por favor selecciona un equipo antes de votar.");
     }
   });
-
+mostrarResultadosLista();     // muestra la lista textual
+  mostrarResultadosBarras();    // actualiza las barras visuales
+});
   // Mostrar resultados
-  function mostrarResultados() {
+  function mostrarResultadoslista() {
     listaResultados.innerHTML = '';
     for (const equipo in votos) {
       const li = document.createElement('li');
@@ -326,7 +333,7 @@
 });
 </script>
 <script>
-function mostrarResultados() {
+function mostrarResultadosbarra() {
   // Obtener todos los votos almacenados
   const votos = JSON.parse(localStorage.getItem("votos")) || {};
 
@@ -367,27 +374,3 @@ document.querySelectorAll('[data-ga-section]').forEach(section => {
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
