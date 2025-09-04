@@ -243,6 +243,30 @@ footer {
   z-index: 10;
   position: relative;
 }
+.seccion {
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.encuesta {
+  background-color: #f0f8ff;
+}
+
+.bombos {
+  background-color: #fffbe6;
+}
+
+#resultados {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  position: relative;
+  z-index: 10;
+}
 
 
 
