@@ -29,6 +29,7 @@
   <h1>Pasión por la Champions</h1>
   <p>Explora, responde y demuestra cuánto sabes del torneo más prestigioso de Europa.</p>
 </header>
+  <main>
   <!-- Trivia Champions -->
   <div class="seccion" id="quiz-container">
     <h2>🎯 Trivia Champions League</h2>
@@ -136,7 +137,7 @@
 
   </section>
 </div>
-
+</main>
   <!-- Script de trivia -->
   <script>
     window.onload = function() {
@@ -251,16 +252,17 @@
 </script>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const header = document.querySelector("header");
-    const main = document.querySelector("main");
-    if (header && main) {
-      main.style.paddingTop = `${header.offsetHeight}px`;
-    }
-  });
+  const header = document.querySelector("header");
+  const main = document.querySelector("main");
+  if (header && main) {
+    main.style.paddingTop = `${header.offsetHeight}px`;
+  }
+});
 </script>
 
 </body>
 </html>
+
 
 
 
