@@ -294,11 +294,16 @@ window.onload = function() {
       localStorage.setItem("votos", JSON.stringify(votos));
 
      Evento GA (puedes comentar esto si aún no usas GA)
-     gtag('event', 'voto_encuesta', {
+    try {
+  gtag('event', 'voto_encuesta', {
     event_category: 'interacción',
     event_label: equipo,
-      value: 1
-     });
+    value: 1
+  });
+} catch (e) {
+  console.warn("Evento GA falló:", e);
+}
+
 
       form.style.display = 'none';
       mensaje.classList.remove('oculto');
@@ -356,6 +361,7 @@ document.querySelectorAll('[data-ga-section]').forEach(section => {
   </script>
 </body>
 </html>
+
 
 
 
