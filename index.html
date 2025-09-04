@@ -220,38 +220,35 @@
 
   // 3️⃣ Evento de envío del formulario
   form.addEventListener('submit', function(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const seleccion = document.querySelector('input[name="equipo"]:checked');
+  const seleccion = document.querySelector('input[name="equipo"]:checked');
 
-    if (seleccion) {
-      const equipo = seleccion.value;
-      votos[equipo]++;
+  if (seleccion) {
+    const equipo = seleccion.value;
+    votos[equipo]++;
+    form.style.display = 'none';
+    mensaje.classList.remove('oculto');
+    resultados.classList.remove('oculto');
+    mostrarResultados();
 
-      form.style.display = 'none';
-      mensaje.classList.remove('oculto');
-      resultados.classList.remove('oculto');
-
-      // Ocultar el mensaje después de 4 segundos
-      setTimeout(() => {
-        mensaje.classList.add('oculto');
-      }, 4000);
-
-      mostrarResultados();
-    } else {
-      alert("Por favor selecciona un equipo antes de votar.");
-    }
-  });
-
-  // 4️⃣ Mostrar resultados
-  function mostrarResultados() {
-    listaResultados.innerHTML = '';
-    for (const equipo in votos) {
-      const li = document.createElement('li');
-      li.textContent = `${equipo}: ${votos[equipo]} voto(s)`;
-      listaResultados.appendChild(li);
-    }
+    // Ocultar el mensaje después de 4 segundos
+    setTimeout(() => {
+      mensaje.classList.add('oculto');
+    }, 4000);
+  } else {
+    alert("Por favor selecciona un equipo antes de votar.");
   }
+});
+
+function mostrarResultados() {
+  listaResultados.innerHTML = '';
+  for (const equipo in votos) {
+    const li = document.createElement('li');
+    li.textContent = `${equipo}: ${votos[equipo]} voto(s)`;
+    listaResultados.appendChild(li);
+  }
+}
 </script>
   form.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -276,6 +273,7 @@
 </script>
 </body>
 </html>
+
 
 
 
