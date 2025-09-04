@@ -11,7 +11,7 @@ body {
   background: linear-gradient(to bottom, #0a0f2c, #1c1f4a);
   color: #ffffff;
   margin: 0;
-  padding: 0;
+  padding: 90;
 }
 
 /* -----------------------------------
@@ -209,4 +209,5 @@ footer {
 .bombo li:last-child {
   border-bottom: none;
 }
+
 
