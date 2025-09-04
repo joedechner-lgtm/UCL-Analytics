@@ -204,65 +204,41 @@
       mostrarPregunta();
     };
   </script>
-<script>
  <script>
-  // 1️⃣ Referencias a elementos del DOM
-  const form = document.getElementById('formEncuesta');
+  // Referencias correctas
+  const form = document.getElementById('encuesta-champions');
   const mensaje = document.getElementById('mensajeVoto');
   const resultados = document.getElementById('resultados');
   const listaResultados = document.getElementById('listaResultados');
 
-  // 2️⃣ Generar el objeto votos dinámicamente desde los inputs
+  // Inicializar votos
   const votos = {};
   document.querySelectorAll('input[name="equipo"]').forEach(input => {
     votos[input.value] = 0;
   });
 
-  // 3️⃣ Evento de envío del formulario
-  form.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const seleccion = document.querySelector('input[name="equipo"]:checked');
-
-  if (seleccion) {
-    const equipo = seleccion.value;
-    votos[equipo]++;
-    form.style.display = 'none';
-    mensaje.classList.remove('oculto');
-    resultados.classList.remove('oculto');
-    mostrarResultados();
-
-    // Ocultar el mensaje después de 4 segundos
-    setTimeout(() => {
-      mensaje.classList.add('oculto');
-    }, 4000);
-  } else {
-    alert("Por favor selecciona un equipo antes de votar.");
-  }
-});
-
-function mostrarResultados() {
-  listaResultados.innerHTML = '';
-  for (const equipo in votos) {
-    const li = document.createElement('li');
-    li.textContent = `${equipo}: ${votos[equipo]} voto(s)`;
-    listaResultados.appendChild(li);
-  }
-}
-</script>
-    <script>
+  // Evento de envío
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    const seleccion = form.equipo.value;
+    const seleccion = document.querySelector('input[name="equipo"]:checked');
+
     if (seleccion) {
-      votos[seleccion]++;
+      const equipo = seleccion.value;
+      votos[equipo]++;
       form.style.display = 'none';
       mensaje.classList.remove('oculto');
       resultados.classList.remove('oculto');
       mostrarResultados();
+
+      setTimeout(() => {
+        mensaje.classList.add('oculto');
+      }, 4000);
+    } else {
+      alert("Por favor selecciona un equipo antes de votar.");
     }
   });
 
+  // Mostrar resultados
   function mostrarResultados() {
     listaResultados.innerHTML = '';
     for (const equipo in votos) {
@@ -274,6 +250,7 @@ function mostrarResultados() {
 </script>
 </body>
 </html>
+
 
 
 
