@@ -56,7 +56,13 @@
       <label><input type="radio" name="equipo" value="Atletico"> Atlético de Madrid 🇪🇸</label><br>
     </fieldset>
     <button type="submit" class="boton">Votar</button>
- 
+  <div id="mensajeVoto" class="oculto">✅ ¡Gracias por votar!</div>
+  <div id="resultados" class="oculto">
+    <h3>Resultados:</h3>
+    <ul id="listaResultados"></ul>
+  </div>
+</section>
+
 
   <!-- Bombos -->
 <div class="seccion">
@@ -198,9 +204,44 @@
       mostrarPregunta();
     };
   </script>
+<script>
+  const form = document.getElementById('formEncuesta');
+  const mensaje = document.getElementById('mensajeVoto');
+  const resultados = document.getElementById('resultados');
+  const listaResultados = document.getElementById('listaResultados');
 
+  // Simulación de votos (puedes conectar esto con Google Analytics o backend luego)
+  const votos = {
+    "Real Madrid": 0,
+    "Manchester City": 0,
+    "Bayern Múnich": 0,
+    "Barcelona": 0
+  };
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const seleccion = form.equipo.value;
+    if (seleccion) {
+      votos[seleccion]++;
+      form.style.display = 'none';
+      mensaje.classList.remove('oculto');
+      resultados.classList.remove('oculto');
+      mostrarResultados();
+    }
+  });
+
+  function mostrarResultados() {
+    listaResultados.innerHTML = '';
+    for (const equipo in votos) {
+      const li = document.createElement('li');
+      li.textContent = `${equipo}: ${votos[equipo]} voto(s)`;
+      listaResultados.appendChild(li);
+    }
+  }
+</script>
 </body>
 </html>
+
 
 
 
