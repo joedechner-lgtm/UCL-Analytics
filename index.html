@@ -6,13 +6,16 @@
   <link rel="stylesheet" href="style.css">
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RFSJVWE021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-RFSJVWE021');
+</script>
+ 
     function registrarEncuesta() {
       gtag('event', 'envio_encuesta', {
         'event_category': 'Encuesta',
@@ -240,14 +243,23 @@
         }
 
         if (seleccion.value === preguntas[preguntaActual].correcta) {
-          puntaje++;
-        }
+  puntaje++;
 
-        preguntaActual++;
+  // Evento GA4: respuesta correcta
+  gtag('event', 'respuesta_trivia', {
+    event_category: 'trivia',
+    event_label: 'correcta',
+    value: 1
+  });
+} else {
+  // Evento GA4: respuesta incorrecta
+  gtag('event', 'respuesta_trivia', {
+    event_category: 'trivia',
+    event_label: 'incorrecta',
+    value: 1
+  });
+}
 
-        if (preguntaActual < preguntas.length) {
-          mostrarPregunta();
-        } else {
           preguntaEl.textContent = "";
           formEl.innerHTML = "";
           btnSiguiente.style.display = "none";
@@ -279,6 +291,13 @@
     if (seleccion) {
       const equipo = seleccion.value;
       votos[equipo]++;
+       // 🎯 Evento GA: registro de voto
+    gtag('event', 'voto_encuesta', {
+      event_category: 'interacción',
+      event_label: equipo,
+      value: 1
+    });
+
       form.style.display = 'none';
       mensaje.classList.remove('oculto');
       resultados.classList.remove('oculto');
@@ -334,8 +353,24 @@ function mostrarResultados() {
   });
 }
 </script>
+  const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const section = entry.target.getAttribute('data-ga-section');
+      gtag('event', 'seccion_vista', {
+        event_category: 'scroll',
+        event_label: section
+      });
+    }
+  });
+});
+
+document.querySelectorAll('[data-ga-section]').forEach(section => {
+  observer.observe(section);
+});
 </body>
 </html>
+
 
 
 
