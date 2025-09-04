@@ -13,15 +13,8 @@
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX'); // Reemplaza con tu ID real
 
-    // Evento personalizado: clic en botón de trivia
-    function registrarClicTrivia() {
-      gtag('event', 'clic_trivia', {
-        'event_category': 'Interacción',
-        'event_label': 'Botón Trivia Champions',
-        'value': 1
-      });
-      alert("¡Trivia iniciada!");
-    }
+  
+
 
     // Evento personalizado: envío de encuesta
     function registrarEncuesta() {
@@ -42,9 +35,15 @@
   </div>
 
   <div class="seccion">
-    <h2>🏆 Trivia rápida</h2>
-    <p>¿Qué equipo ha ganado más Champions League?</p>
-    <button class="boton" onclick="registrarClicTrivia()">Responder</button>
+<h2>🏆 Trivia rápida</h2>
+    <  <form id="trivia-form">
+  <p>¿Quién ganó la Champions League en 2022?</p>
+  <label><input type="radio" name="respuesta" value="Real Madrid"> Real Madrid</label><br>
+  <label><input type="radio" name="respuesta" value="Liverpool"> Liverpool</label><br>
+  <label><input type="radio" name="respuesta" value="Manchester City"> Manchester City</label><br>
+  <button type="submit">Responder</button>
+</form>
+<p id="resultado"></p>
   </div>
 
   <div class="seccion">
@@ -129,5 +128,25 @@
     </div>
   </section>
 </div>
+<script>
+  document.getElementById('trivia-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const respuestaSeleccionada = document.querySelector('input[name="respuesta"]:checked');
+    const resultado = document.getElementById('resultado');
+
+    if (respuestaSeleccionada) {
+      if (respuestaSeleccionada.value === "Real Madrid") {
+        resultado.textContent = "✅ ¡Correcto!";
+        resultado.style.color = "green";
+      } else {
+        resultado.textContent = "❌ Incorrecto. La respuesta correcta es Real Madrid.";
+        resultado.style.color = "red";
+      }
+    } else {
+      alert("Por favor selecciona una respuesta.");
+    }
+  });
+</script>
 </body>
 </html>
