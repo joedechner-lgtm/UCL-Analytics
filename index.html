@@ -211,13 +211,11 @@
   const listaResultados = document.getElementById('listaResultados');
 
   // Simulación de votos (puedes conectar esto con Google Analytics o backend luego)
-  const votos = {
-    "Real Madrid": 0,
-    "Manchester City": 0,
-    "Bayern Múnich": 0,
-    "Barcelona": 0
-  };
-
+  const votos = { };
+// Recorre todos los inputs con name="equipo" y crea una entrada en el objeto
+document.querySelectorAll('input[name="equipo"]').forEach(input => {
+  votos[input.value] = 0;
+});
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     const seleccion = form.equipo.value;
@@ -241,6 +239,7 @@
 </script>
 </body>
 </html>
+
 
 
 
