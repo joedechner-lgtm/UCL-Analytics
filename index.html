@@ -36,18 +36,23 @@
 
   <!-- Encuesta -->
   <div class="seccion">
-    <h2>📊 Encuesta</h2>
-    <form onsubmit="registrarEncuesta(); return false;">
-      <label>¿Cuál es tu equipo favorito?</label><br>
-      <select>
-        <option>Real Madrid</option>
-        <option>Manchester City</option>
-        <option>Barcelona</option>
-        <option>Otro</option>
-      </select><br>
-      <button class="boton" type="submit">Enviar</button>
-    </form>
-  </div>
+  <h2>⚽ ¿Cuál de estos equipos crees que ganará la Champions League 2025/26?</h2>
+  <form id="encuesta-champions">
+    <fieldset>
+      <legend>Elige tu favorito:</legend>
+      <label><input type="radio" name="equipo" value="Real Madrid"> Real Madrid 🇪🇸</label><br>
+      <label><input type="radio" name="equipo" value="Manchester City"> Manchester City 🏴</label><br>
+      <label><input type="radio" name="equipo" value="Bayern Munich"> Bayern Múnich 🇩🇪</label><br>
+      <label><input type="radio" name="equipo" value="PSG"> Paris Saint-Germain 🇫🇷</label><br>
+      <label><input type="radio" name="equipo" value="Barcelona"> FC Barcelona 🇪🇸</label><br>
+      <label><input type="radio" name="equipo" value="Liverpool"> Liverpool 🏴</label><br>
+      <label><input type="radio" name="equipo" value="Inter"> Inter de Milán 🇮🇹</label><br>
+      <label><input type="radio" name="equipo" value="Chelsea"> Chelsea 🏴</label><br>
+      <label><input type="radio" name="equipo" value="Arsenal"> Arsenal 🏴</label><br>
+      <label><input type="radio" name="equipo" value="Atletico"> Atlético de Madrid 🇪🇸</label><br>
+    </fieldset>
+    <button type="submit" class="boton">Votar</button>
+ 
 
   <!-- Bombos -->
 <div class="seccion">
@@ -192,4 +197,5 @@
 
 </body>
 </html>
+
 
