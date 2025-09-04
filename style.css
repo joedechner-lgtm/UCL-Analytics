@@ -1,6 +1,11 @@
-/* Tipografía moderna desde Google Fonts */
+/* -----------------------------------
+   Tipografía moderna desde Google Fonts
+----------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+/* -----------------------------------
+   Estilos base
+----------------------------------- */
 body {
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(to bottom, #0a0f2c, #1c1f4a);
@@ -9,7 +14,9 @@ body {
   padding: 0;
 }
 
-/* Encabezado tipo Champions */
+/* -----------------------------------
+   Encabezado tipo Champions
+----------------------------------- */
 header {
   background-color: #001f54;
   padding: 20px;
@@ -23,7 +30,9 @@ header h1 {
   margin: 0;
 }
 
-/* Secciones con estilo de tarjeta */
+/* -----------------------------------
+   Secciones generales
+----------------------------------- */
 section {
   margin: 30px auto;
   padding: 20px;
@@ -33,42 +42,9 @@ section {
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
-/* Botones interactivos */
-.boton {
-  background-color: #ffd700;
-  color: #001f54;
-  border: none;
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.b
-
-/* Pie de página sobrio */
-footer {
-  background-color: #001f54;
-  color: #ccc;
-  text-align: center;
-  padding: 15px;
-  font-size: 0.9em;
-  border-top: 2px solid #ffd700;
-}
-
-/* Responsive para móviles */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8em;
-  }
-
-  section {
-    margin: 15px;
-    padding: 15px;
-  }
-}
-/* Secciones tipo tarjeta */
+/* -----------------------------------
+   Secciones tipo tarjeta (trivia, encuesta, bombos)
+----------------------------------- */
 .seccion {
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid #ffd700;
@@ -84,4 +60,45 @@ footer {
   transform: scale(1.02);
 }
 
-/
+/* -----------------------------------
+   Botones interactivos estilo UEFA
+----------------------------------- */
+.boton {
+  background-color: #ffd700;
+  color: #001f54;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton:hover {
+  background-color: #e6c200;
+}
+
+/* -----------------------------------
+   Pie de página sobrio
+----------------------------------- */
+footer {
+  background-color: #001f54;
+  color: #ccc;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9em;
+  border-top: 2px solid #ffd700;
+}
+
+/* -----------------------------------
+   Responsive para móviles
+----------------------------------- */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8em;
+  }
+
+  section,
+  .seccion {
+    margin: 15px;
+    padding: 15px;
