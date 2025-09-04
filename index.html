@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pasión por la Champions</title>
+  <link rel="stylesheet" href="style.css">
+
+    <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX'); // Reemplaza con tu ID real
+
+    // Evento personalizado: clic en botón de trivia
+    function registrarClicTrivia() {
+      gtag('event', 'clic_trivia', {
+        'event_category': 'Interacción',
+        'event_label': 'Botón Trivia Champions',
+        'value': 1
+      });
+      alert("¡Trivia iniciada!");
+    }
+
+    // Evento personalizado: envío de encuesta
+    function registrarEncuesta() {
+      gtag('event', 'envio_encuesta', {
+        'event_category': 'Encuesta',
+        'event_label': 'Equipo Favorito',
+        'value': 1
+      });
+      alert("¡Gracias por tu respuesta!");
+    }
+  </script>
+</head>
+<body>
+
+  <div class="seccion">
+    <h1>Pasión por la Champions</h1>
+    <p>Explora, responde y demuestra cuánto sabes del torneo más prestigioso de Europa.</p>
+  </div>
+
+  <div class="seccion">
+    <h2>🏆 Trivia rápida</h2>
+    <p>¿Qué equipo ha ganado más Champions League?</p>
+    <button class="boton" onclick="registrarClicTrivia()">Responder</button>
+  </div>
+
+  <div class="seccion">
+    <h2>📊 Encuesta</h2>
+    <form onsubmit="registrarEncuesta(); return false;">
+      <label>¿Cuál es tu equipo favorito?</label><br>
+      <select>
+        <option>Real Madrid</option>
+        <option>Manchester City</option>
+        <option>Barcelona</option>
+        <option>Otro</option>
+      </select><br>
+      <button class="boton" type="submit">Enviar</button>
+    </form>
+  </div>
+<div class="seccion">
+ 
+* Botones UEFA */
+.boton {
+  background
+<div class="seccion">
+  <h2>🏆 Bombos de la Champions League 2025/26</h2>
+  <section class="bombos-champions">
+    <div class="bombo">
+      <h3 class="titulo-bombo">Bombo 1</h3>
+      <ul>
+        <li class="equipo">Real Madrid 🇪🇸</li>
+        <li class="equipo">FC Barcelona 🇪🇸</li>
+        <li class="equipo">Paris Saint-Germain 🇫🇷</li>
+        <li class="equipo">Manchester City 🏴</li>
+        <li class="equipo">Bayern Munich 🇩🇪</li>
+        <li class="equipo">Liverpool 🏴</li>
+        <li class="equipo">Chelsea 🏴</li>
+        <li class="equipo">Inter de Milán 🇮🇹</li>
+        <li class="equipo">Benfica 🇵🇹</li>
+      </ul>
+    </div>
+
+    <div class="bombo">
+      <h3 class="titulo-bombo">Bombo 2</h3>
+      <ul>
+        <li class="equipo">Arsenal 🏴</li>
+        <li class="equipo">Juventus 🇮🇹</li>
+        <li class="equipo">Bayer Leverkusen 🇩🇪</li>
+        <li class="equipo">Atlético de Madrid 🇪🇸</li>
+        <li class="equipo">Atalanta 🇮🇹</li>
+        <li class="equipo">Eintracht Frankfurt 🇩🇪</li>
+        <li class="equipo">Villarreal 🇪🇸</li>
+        <li class="equipo">Tottenham Hotspur 🏴</li>
+        <li class="equipo">Ajax 🇳🇱</li>
+      </ul>
+    </div>
+
+    <div class="bombo">
+      <h3 class="titulo-bombo">Bombo 3</h3>
+      <ul>
+        <li class="equipo">Napoli 🇮🇹</li>
+        <li class="equipo">PSV Eindhoven 🇳🇱</li>
+        <li class="equipo">Olympiacos 🇬🇷</li>
+        <li class="equipo">Slavia Praga 🇨🇿</li>
+        <li class="equipo">Sporting CP 🇵🇹</li>
+        <li class="equipo">Club Brugge 🇧🇪</li>
+        <li class="equipo">Marsella 🇫🇷</li>
+        <li class="equipo">Bodo/Glimt 🇳🇴</li>
+        <li class="equipo">Union Saint-Gilloise 🇧🇪</li>
+      </ul>
+    </div>
+
+    <div class="bombo">
+      <h3 class="titulo-bombo">Bombo 4</h3>
+      <ul>
+        <li class="equipo">AS Monaco 🇫🇷</li>
+        <li class="equipo">Galatasaray 🇹🇷</li>
+        <li class="equipo">Newcastle United 🏴</li>
+        <li class="equipo">Athletic Club 🇪🇸</li>
+        <li class="equipo">FC Copenhagen 🇩🇰</li>
+        <li class="equipo">Qarabag 🇦🇿</li>
+        <li class="equipo">Pafos FC 🇨🇾</li>
+        <li class="equipo">Kairat Almaty 🇰🇿</li>
+        <li class="equipo">Sparta Praga 🇨🇿</li>
+      </ul>
+    </div>
+  </section>
+</div>
+</body>
+</html>
